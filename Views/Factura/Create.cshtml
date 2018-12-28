@@ -1,0 +1,165 @@
+@model prjMaestroDetalle.Models.ArticuloFactura
+
+@{
+    ViewData["Title"] = "Facturar";
+}
+<section class="contenedor">
+    <h1>Facturacion</h1>
+    
+    <section class="calculo-controles">
+        <strong><h4>SubTotal: </h4></strong> <h4 id="facturaSubTotal">0.0</h4> |
+        <strong><h4>Total: </h4></strong> <h4 id="facturaTotal">0.0</h4>
+    </section>
+
+    <h4>Factura</h4>
+    <hr />
+
+    <div >
+        <div>
+            <form>
+                <section class="factura-opcion">
+                    <article class="panel-option">
+                        <h1>Datos de factura</h1>
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                        <label asp-for="IdCliente" class="control-label">Cliente</label>
+                        <div class="form-group list-select">    
+                            <select asp-for="IdCliente" name="IdCliente" class ="form-control" asp-items="ViewBag.IdCliente"></select>
+                            <input class="btn btn-primary"  data-toggle="modal" data-target="#modalAgregarCliente" type="button" value="Crear cliente">
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="IdCondicionPago" class="control-label">Condicion de pago</label>
+                            <select asp-for="IdCondicionPago" name="IdCondicionPago" class ="form-control" asp-items="ViewBag.IdCondicionPago"></select>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="IdEstado" class="control-label">Estado</label>
+                            <select asp-for="IdEstado"  name="IdEstado" class ="form-control" asp-items="ViewBag.IdEstado"></select>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Comentario" class="control-label">Comentario</label>
+                            <input type="textArea" asp-for="Comentario" placeholder="Escriba aqui" class ="form-control"></select>
+                        </div>
+                    </article>
+
+                    <article class="inf-factura">
+                        <h1>Detalle de factura</h1>
+
+                        <label class="control-label" >Articulos</label>
+
+                        <hgroup class="form-group list-select">    
+                            <select name="ArticuloCombo"   class ="form-control" asp-items="ViewBag.IdArticulo"></select>
+                            <br/>
+                            <input class="btn btn-primary" id="ModalAgregar" data-toggle="modal" data-target="#modalAgregarArticulo" type="button" value="Agregar"/>
+                            <input class="btn btn-primary" id="consultar" type="button" value="Consultar"/>
+                        </hgroup>
+
+
+                        <hgroup class="table-wrapper-scroll-y">
+                            <table class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>No.</th>
+                                        <th>Articulo</th>
+                                        <th>Cantidad</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody id="detalle-table"></tbody>
+                            </table>    
+                        </hgroup>
+                    </article>                    
+                </section>
+
+                <div class="form-group btn-facturar">
+                    <input type="button" value="Facturar" id="btn-enviar-factura" class="btn bg-success text-white" />
+            </div>
+            <br/>
+        <br/>
+
+            <!-- Modal Agregar-->
+
+            <div class="modal fade" id="modalAgregarArticulo" tabindex="-1" role="dialog" aria-labelledby="modalAgregarArticulo" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="ModalAgregarTitulo">Agregar articulo</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <hgroup class="form-group">
+                        <strong><label>Articulo: </label></strong>
+                        <label id="Articulo-select"></label> 
+                    </hgroup>
+                    
+                    <hgroup class="form-group">
+                        <label>Cantidad</label>
+                        <input id="Cantidad" type="number" class ="form-control only-number" maxlength="10" /> 
+                    </hgroup>
+                </div>
+
+                <div class="modal-footer">
+
+                <!-- data-dismiss="modal" -->
+                    <button type="button" class="btn-prueba btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" id="agregar" class="btn btn-primary" data-dismiss="modal">Agregar</button>
+                </div>
+                </div>
+            </div>
+            </div>
+
+
+    <!-- Modal Agregar cliente-->
+
+            <div class="modal fade" id="modalAgregarCliente" tabindex="-1" role="dialog" aria-labelledby="modalAgregarCliente" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="ModalAgregarTitulo">Crear cliente</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="Nombre" class="control-label"></label>
+                        <input asp-for="Nombre" class="form-control only-letter" required="true" />
+                        <span asp-validation-for="Nombre" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Apellido" class="control-label"></label>
+                        <input asp-for="Apellido" class="form-control only-letter" required="true" />
+                        <span asp-validation-for="Apellido" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Cedula" class="control-label"></label>
+                        <input asp-for="Cedula" class="form-control only-number" required="true"/>
+                        <span asp-validation-for="Cedula" class="text-danger"></span>
+                    </div>
+                </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="button" id="btn-agregar-cliente" class="btn btn-primary">Crear cliente</button>
+                    </div>
+                </div>
+            </div>
+            </div>
+
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Index">Ir a la lista de facturas</a>
+    </div>
+</section>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

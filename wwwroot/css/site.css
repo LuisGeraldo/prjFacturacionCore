@@ -1,0 +1,219 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  line-height: 60px; /* Vertically center the text there */
+}
+
+
+/* Vista facturacion */
+
+.article{
+  height: 30px;
+}
+
+/* .factura-opcion select{
+   width: 400px;
+} */
+
+.factura-opcion{
+    display: flex;
+    flex-wrap: wrap;
+    height: auto; 
+    width: 100%;
+}
+
+.factura-opcion article{
+    width: 400px;
+    margin: 20px;
+}
+
+.inf-factura{
+  border-left: 1px solid slategray;
+  padding-left: 20px;
+  width: 600px !important;
+}
+
+.iinf-factura select{
+    widows: 600px !important;
+}
+
+@media(max-width: 1020px){
+
+  .inf-factura{
+    border-left: none !important;
+    padding-left: 0px;
+  }
+   
+  .parallax h1{
+    font-size: 10px;
+  }
+
+
+}
+
+.btn-facturar{
+  float: right;
+  margin-bottom: 10px;
+}
+
+.calculo-controles{
+  float: right;
+}
+.calculo-controles h4{
+  font-size: 20px;
+  display: inline;
+
+}
+
+.nav-controles{
+  float: left !important;
+}
+
+
+.list-select{
+  display: flex;
+  flex-wrap: wrap;
+  height: auto;
+  widows: 100%;
+}
+
+.panel-option .list-select select{
+  margin-right: 10px;
+  width: 270px;
+}
+
+.table-wrapper-scroll-y {
+  display: block;
+  max-height: 200px;
+  overflow-y: auto;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  }
+
+  .inf-factura .list-select select{
+    margin-right: 10px;
+    width: 372px; 
+  }
+
+  .inf-factura .list-select input[type="button"]{
+    margin-right: 9px;
+    
+  }
+
+.parallax { 
+    background-image: url("../Img/image.webp");
+ 
+    height: 500px;   
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.parallax h1{
+  text-align: center;
+  font-size: 60px;
+}
+
+
+
+.content-main{
+  width: 100% !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+}
+
+.contenedor{
+  width: 80%;
+  margin: 0 auto;
+}
+
+/* Css barra carga */
+
+.loader {
+    display: none;
+    margin-left:auto;
+    margin-right:auto;
+    left:0;
+    right:0;
+    position: absolute;
+    z-index: 1;
+    justify-content: center;
+    margin: 0 auto;
+    border: 8px solid #f3f3f3; /* Light grey */
+    border-top: 8px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.parallax p{
+  font-size: 17px;
+}
+
+.panel-factura label{
+  font-weight: bold;
+  font-size: 18px;
+}

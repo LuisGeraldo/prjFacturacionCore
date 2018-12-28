@@ -1,0 +1,106 @@
+@model IEnumerable<prjMaestroDetalle.Models.DetalleFactura>
+
+@{
+    ViewData["Title"] = "Detalle Factura";
+}
+<section class="contenedor">
+
+    <h1>Factura</h1>
+    <section class="factura-opcion panel-factura">
+    <article>
+        <hgroup>
+            <label>Fecha: </label> @ViewData["Fecha"]
+        </hgroup>
+
+        <hgroup>
+            <label>No. Factura: </label> @ViewData["IdFactura"]
+        </hgroup>
+
+         <hgroup>
+            <label>Cliente: </label> @ViewData["Cliente"]
+        </hgroup>
+
+         <hgroup>
+            <label>Condicion de pago: </label>  @ViewData["CondicionPago"]
+        </hgroup>
+    </article>
+
+    <article>
+        <hgroup>
+            <label>Cant. de articulos: </label>  @ViewData["CantidadArticulo"]
+        </hgroup>
+
+        <hgroup>
+            <label>Sub-total: </label>  @ViewData["subTotal"]
+        </hgroup>
+
+        <hgroup>
+            <label>Total: </label>  @ViewData["Total"]
+        </hgroup>
+    </article>
+</section>
+<br/>
+     
+
+    <h1>Detalle de factura</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    No. Factura
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Articulo)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Cantidad)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.ITBIs)
+                </th>
+
+                <th>
+                    Precio
+                </th>
+              
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+    @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Factura.Id)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Articulo.Nombre)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cantidad)
+                </td> 
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.ITBIs)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Valor)
+                </td>
+               
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Detalles</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
+                </td>
+            </tr>
+    }
+        </tbody>
+    </table>
+    <a href="/Factura/index">Volver atras</a>
+</section>

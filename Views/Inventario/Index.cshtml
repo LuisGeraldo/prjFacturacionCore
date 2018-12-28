@@ -1,0 +1,63 @@
+@model IEnumerable<prjMaestroDetalle.Models.Inventario>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<section class="contenedor">
+    <h1>Inventario</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Articulo)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Existencia)
+                </th>
+
+                <th>
+                    Precio de compra
+                </th>
+
+                <th>
+                    Precio de venta
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.ITBIs)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+    @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Articulo.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Existencia)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PrecioCompra)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PrecioVenta)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ITBIs)
+                </td>
+                
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Detalle</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
+                </td>
+            </tr>
+    }
+        </tbody>
+    </table>
+</section>

@@ -1,0 +1,7 @@
+{
+    "appService.deploySubpath": "",
+    "appService.zipIgnorePattern": [
+        "node_modules{,/**}"
+    ],
+    "appService.defaultWebAppToDeploy": "/subscriptions/f7806369-e118-4fb2-b582-346926b05d08/resourceGroups/maestrodetalledominico/providers/Microsoft.Web/sites/MaestroDetalleDominico"
+}
