@@ -36,24 +36,24 @@ namespace prjMaestroDetalle.Util
                 return false;
         }
 
-        // public  bool ExistCedula(string Cedula)
-        // {
-        //     try
-        //     {
-        //         if(IsValidCedula(Cedula))
-        //         {
-        //           var Cliente = Context.Cliente.FirstOrDefault(x => x.Cedula.Equals(Cedula));
-        //           if(Cliente != null)
-        //           {
-        //               return true;
-        //           }
-        //         }
-        //     }
-        //     catch (Exception ex)
-        //     {   
-        //         Console.Write("ocurrio un error" + ex);
-        //     }
-        //     return false;
-        // }
+         public  bool ExistCedula(string Cedula)
+         {
+             try
+             {
+                 if(IsValidCedula(Cedula))
+                  {
+                   var Cliente = Context.Cliente.FirstOrDefault(x => x.Cedula.Equals(Cedula));
+                   if(Cliente != null)
+                   {
+                       return true;
+                   }
+                 }
+             }
+             catch (Exception ex)
+             {   
+                 Console.Write("ocurrio un error" + ex);
+             }
+             return false;
+         }
     }
 }
